@@ -11,7 +11,7 @@ var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = today.getFullYear();
 
 today = mm + "/" + dd + "/" + yyyy;
-document.write(today);
+// document.write(today);
 document.querySelector(".day").value = dd;
 document.querySelector(".month").value = mm;
 document.querySelector(".year").value = yyyy;
@@ -36,11 +36,10 @@ document.querySelector(".enter").addEventListener("click", function () {
   } else alert("Please enter for month from 1 to 12");
   if (
     Number(document.querySelector(".day").value) > 0 &&
-    Number(document.querySelector(".day").value) <=
-      monthMaxDay[Number(document.querySelector(".month").value) - 1]
+    Number(document.querySelector(".day").value) <= monthMaxDay[date.month]
   ) {
     date.day = Number(document.querySelector(".day").value);
-  } else alert(`Please enter for day from 1 to ${monthMaxDay[Number(document.querySelector(".month").value) - 1]}`);
+  } else alert(`Please enter for day from 1 to ${monthMaxDay[date.month]}`);
   console.log(date.day, date.month, date.year);
   if (!date.day || !(date.month + 1) || !date.year) {
     document.querySelector("h2").textContent =
@@ -63,9 +62,9 @@ document.querySelector(".enter").addEventListener("click", function () {
     //Calculating the weeks
     let k = 0;
     //3 days in last year's week
-    if (year === 2021) k = 3;
+    if (year === 2021) k = 2;
     //2 days in last year's week
-    else if (year === 2022) k = 2;
+    else if (year === 2022) k = 1;
 
     //Adjusting the result for better reading
     const result = Math.round((dayOfYear - k) / 7),
